@@ -14,23 +14,46 @@ public class Bat {
         System.out.println();
     }
 
-    int nonUniformDistribution() {
+    int nonUniformDistributionForBatsman() {
         Random r = new Random();
         double v = r.nextDouble();
 
         if(v <= 0.30) {
             return 0;
-        } else if(v <= 0.59) {
+        } else if(v <= 0.60) {
             return 1;
-        } else if(v <= 0.7) {
+        } else if(v <= 0.74) {
             return 2;
-        } else if(v <= 0.75) {
+        } else if(v <= 0.79) {
             return 3;
-        } else if(v <= 0.88) {
+        } else if(v <= 0.91) {
             return 4;
-        } else if(v <= 0.881) {
+        } else if(v <= 0.911) {
             return 5;
-        } else if(v <= 0.94) {
+        } else if(v <= 0.97) {
+            return 6;
+        } else {
+            return 7;
+        }
+    }
+
+    int nonUniformDistributionForBowler() {
+        Random r = new Random();
+        double v = r.nextDouble();
+
+        if(v <= 0.40) {
+            return 0;
+        } else if(v <= 0.52) {
+            return 1;
+        } else if(v <= 0.57) {
+            return 2;
+        } else if(v <= 0.60) {
+            return 3;
+        } else if(v <= 0.66) {
+            return 4;
+        } else if(v <= 0.661) {
+            return 5;
+        } else if(v <= 0.70) {
             return 6;
         } else {
             return 7;
@@ -44,7 +67,13 @@ public class Bat {
         for(int currOver = 1; currOver <= totalOvers; currOver++) {
             for(int currBall = 1; currBall <= 6; currBall++) {
 
-                int ballResult = nonUniformDistribution();
+                int ballResult;
+
+                if(team1.players.get(currBatter).type == "Batsman") {
+                    ballResult = nonUniformDistributionForBatsman();
+                } else {
+                    ballResult = nonUniformDistributionForBowler();
+                }
 
                 if(ballResult == 7) {
                     team1.wicketLeft--;
