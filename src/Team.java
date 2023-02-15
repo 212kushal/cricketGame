@@ -1,6 +1,12 @@
+import java.util.ArrayList;
+import java.util.*;
+import java.util.Arrays;
+
 public class Team {
     private String teamName;
     private int teamSize;
+
+    public ArrayList<Player> players = new ArrayList<Player>();
 
     public int totalScore = 0;
     public int wicketLeft = 10;
